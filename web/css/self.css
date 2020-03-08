@@ -33,3 +33,10 @@ body{
     margin: 10px auto;
     background-color: brown;
 }
+#info1,#info2,#info3,#info4,#info5,#info6{
+    float: left;
+    margin: 5px 8px;
+    width: 250px;
+    height: 120px;
+    background-color: white;
+}
