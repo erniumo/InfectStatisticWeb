@@ -1,11 +1,12 @@
 body{
+    background-image: url("../images/21.jpg");
     min-width: 1000px;
     margin: 0 auto;
 }
 #wrap{
-    width: 1000px;
+    background-color: cornflowerblue;
+    width: 900px;
     margin: 0 auto;
-    background-color: aqua;
 }
 #header{
     width: 900;
@@ -18,7 +19,6 @@ body{
     height: 300px;
     width: 900px;
     margin: 0 auto;
-    background-color: blue;
 }
 #all{
     padding: 20px 0;
@@ -34,9 +34,15 @@ body{
     background-color: brown;
 }
 #info1,#info2,#info3,#info4,#info5,#info6{
+    text-align: center;
+    font-size: medium;
     float: left;
     margin: 5px 8px;
     width: 250px;
     height: 120px;
+    color: black;
     background-color: white;
+}
+#container1{
+    display: none;
 }
