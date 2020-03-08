@@ -1,17 +1,31 @@
 <!DOCTYPE html>
-<html>
+<div>
   <head>
     <title>现有确诊</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <link href="data/styles.css" type="text/css" rel="stylesheet"/>
-    <link href="files/page_1/styles.css" type="text/css" rel="stylesheet"/>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+ 
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+ 
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="css/self.css" rel="stylesheet">
     <script src="js/jquery-1.11.1.min.js"></script>
     <script src="js/echarts.min.js"></script>
     <script src="js/china.js"></script>
   </head>
   <body>
-    <div id="container" style="height: 500px;width:900px;background:white;margin:0;"></div>
+    <div id="wrap">
+        <div id="header"></div>
+        <div id="nav">
+            <div class="row"></div>
+            <div class="row"></div>
+        </div> 
+        <div id="all"><div id="container" style="height: 500px;width:900px;background:white;margin: 20px 0;"></div></div>
+    </div>
 
     <script type="text/javascript">
           function randomData() {  
@@ -26,9 +40,9 @@
         var option = {
             tooltip: {
                 formatter: function (params) {
-                    var info = '<p style="font-size:18px">' + params.name + '</p><p style="font-size:14px">感染患者 具体情况xxxxxxxxxx</p>'
-                    return info;
-                },
+                        var info = '<p style="font-size:18px">' + params.name + '</p><p style="font-size:14px">感染患者 具体情况xxxxxxxxxx</p>'
+                        return info;
+                    },
                 backgroundColor: "#ff7f50",//提示标签背景颜色
                 textStyle: { color: "#fff" } //提示标签字体颜色
             },
