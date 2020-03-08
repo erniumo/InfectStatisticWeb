@@ -29,8 +29,8 @@
             <input type="button" value="设置" onclick="gettime()"> 
         </form></div>
         <div id="nav">
-            <div class="row"><div id="info1"><p>现有确诊</p><p style="color: coral;"></p><p>较昨日<span style="color: coral;"></span></p></div><div id="info2"><p>现有疑似</p><p style="color: darkgoldenrod;"></p><p>较昨日<span style="color: darkgoldenrod;"></span></p></div><div id="info3"><p>现有重症</p><p style="color: blue;"></p><p>较昨日<sapn style="color: blue;"></sapn></p></div></div>
-            <div class="row"><div id="info4"><p>累计确诊</p><p style="color: red ;"></p><p>较昨日<span style="color: red;"></span></p></div><div id="info5"><p>累计治愈</p><p style="color: green;"></p><p>较昨日<span style="color: green;"></span></p></div><div id="info6"><p>累计死亡</p><p style="color: gray;"></p><p>较昨日<span style="color: gray;"></span></p></div></div>
+            <div class="row"><div id="info1"><p>现有确诊</p><p id="i1" style="color: coral; font-weight: bolder; font-size:2em;"></p><p>较昨日<span id="i11" style="color: coral;"></span></p></div><div id="info2"><p>现有疑似</p><p id="i2" style="color: darkgoldenrod;font-weight: bolder;font-size:2em;"></p><p>较昨日<span id="i22" style="color: darkgoldenrod;"></span></p></div><div id="info3"><p>现有重症</p><p id="i3" style="color: blue;font-weight: bolder;font-size:2em;"></p><p>较昨日<sapn id="i33" style="color: blue;"></sapn></p></div></div>
+            <div class="row"><div id="info4"><p>累计确诊</p><p id="i4" style="color: red ;font-weight: bolder;font-size:2em;"></p><p>较昨日<span id="i44" style="color: red;"></span></p></div><div id="info5"><p>累计治愈</p><p id="i5" style="color: green;font-weight: bolder;font-size:2em;"></p><p>较昨日<span id="i55" style="color: green;"></span></p></div><div id="info6"><p>累计死亡</p><p id="i6" style="color: gray;font-weight: bolder; font-size:2em;"></p><p>较昨日<span id="i66" style="color: gray;"></span></p></div></div>
         </div>
         <div id="nav1"><button type="button" class="btn btn-primary btn-lg btn-block" onclick="chan()">现有确诊</button>
             <button type="button" class="btn btn-primary btn-lg btn-block" onclick="chan1()">累计确诊</button></div> 
@@ -45,15 +45,15 @@
                       return Math.round(Math.random()*500);  
                   } 
         // 全国省份列表
-        var dataMap = [{ name: '北京',value: randomData() }, { name: '天津',value: randomData() }, { name: '上海',value: randomData() }, { name: '重庆',value: randomData() }, { name: '河北',value: randomData() }, { name: '河南',value: randomData() }, { name: '云南' }, { name: '辽宁',value: randomData() }, { name: '黑龙江' ,value: randomData()}, { name: '湖南',value: randomData() }, { name: '安徽',value: randomData() }, { name: '山东',value: randomData() },
-        { name: '新疆',value: randomData() }, { name: '江苏',value: randomData() }, { name: '浙江',value: randomData() }, { name: '江西',value: randomData() }, { name: '湖北',value: randomData() }, { name: '广西',value: randomData() }, { name: '甘肃' }, { name: '山西' }, { name: '内蒙古' ,value: randomData()}, { name: '陕西',value: randomData() }, { name: '吉林',value: randomData() }, { name: '福建',value: randomData() }, { name: '贵州',value: randomData() },
+        var dataMap = [{ name: '北京',value: randomData() }, { name: '天津',value: randomData() }, { name: '上海',value: randomData() }, { name: '重庆',value: randomData() }, { name: '河北',value: randomData() }, { name: '河南',value: randomData() }, { name: '云南' ,value: randomData() }, { name: '辽宁',value: randomData() }, { name: '黑龙江' ,value: randomData()}, { name: '湖南',value: randomData() }, { name: '安徽',value: randomData() }, { name: '山东',value: randomData() },
+        { name: '新疆',value: randomData() }, { name: '江苏',value: randomData() }, { name: '浙江',value: randomData() }, { name: '江西',value: randomData() }, { name: '湖北',value: randomData() }, { name: '广西',value: randomData() }, { name: '甘肃',value: randomData()  }, { name: '山西' ,value: randomData() }, { name: '内蒙古' ,value: randomData()}, { name: '陕西',value: randomData() }, { name: '吉林',value: randomData() }, { name: '福建',value: randomData() }, { name: '贵州',value: randomData() },
         { name: '广东',value: randomData() }, { name: '青海',value: randomData() }, { name: '西藏' ,value: randomData()}, { name: '四川' ,value: randomData()}, { name: '宁夏',value: randomData() }, { name: '海南',value: randomData() }, { name: '台湾' ,value: randomData()}, { name: '香港',value: randomData() }, { name: '澳门',value: randomData() }]
        
         // 绘制图表，准备数据
         var option = {
             tooltip: {
                 formatter: function (params) {
-                        var info = '<p style="font-size:18px">' + params.name + '</p><p style="font-size:14px">感染患者 具体情况xxxxxxxxxx</p>'
+                        var info = '<p style="font-size:18px">' + params.name + '</p><p style="font-size:14px">感染患者'+params.value+'</p>';
                         return info;
                     },
                 backgroundColor: "#ff7f50",//提示标签背景颜色
@@ -63,7 +63,7 @@
              visualMap: {  
                 show : true,  
                 x: 'left',  
-                y: 'center',  
+                y: 'bottom',  
                 splitList: [   
                     {start: 500, end:600},{start: 400, end: 500},  
                     {start: 300, end: 400},{start: 200, end: 300},  
@@ -123,8 +123,8 @@
                     return Math.round(Math.random()*500);  
                 } 
     // 全国省份列表
-    var dataMap = [{ name: '北京',value: randomData() }, { name: '天津',value: randomData() }, { name: '上海',value: randomData() }, { name: '重庆',value: randomData() }, { name: '河北',value: randomData() }, { name: '河南',value: randomData() }, { name: '云南' }, { name: '辽宁',value: randomData() }, { name: '黑龙江' ,value: randomData()}, { name: '湖南',value: randomData() }, { name: '安徽',value: randomData() }, { name: '山东',value: randomData() },
-    { name: '新疆',value: randomData() }, { name: '江苏',value: randomData() }, { name: '浙江',value: randomData() }, { name: '江西',value: randomData() }, { name: '湖北',value: randomData() }, { name: '广西',value: randomData() }, { name: '甘肃' }, { name: '山西' }, { name: '内蒙古' ,value: randomData()}, { name: '陕西',value: randomData() }, { name: '吉林',value: randomData() }, { name: '福建',value: randomData() }, { name: '贵州',value: randomData() },
+    var dataMap = [{ name: '北京',value: randomData() }, { name: '天津',value: randomData() }, { name: '上海',value: randomData() }, { name: '重庆',value: randomData() }, { name: '河北',value: randomData() }, { name: '河南',value: randomData() }, { name: '云南' ,value: randomData() }, { name: '辽宁',value: randomData() }, { name: '黑龙江' ,value: randomData()}, { name: '湖南',value: randomData() }, { name: '安徽',value: randomData() }, { name: '山东',value: randomData() },
+    { name: '新疆',value: randomData() }, { name: '江苏',value: randomData() }, { name: '浙江',value: randomData() }, { name: '江西',value: randomData() }, { name: '湖北',value: randomData() }, { name: '广西',value: randomData() }, { name: '甘肃' ,value: randomData() }, { name: '山西'  ,value: randomData()}, { name: '内蒙古' ,value: randomData()}, { name: '陕西',value: randomData() }, { name: '吉林',value: randomData() }, { name: '福建',value: randomData() }, { name: '贵州',value: randomData() },
     { name: '广东',value: randomData() }, { name: '青海',value: randomData() }, { name: '西藏' ,value: randomData()}, { name: '四川' ,value: randomData()}, { name: '宁夏',value: randomData() }, { name: '海南',value: randomData() }, { name: '台湾' ,value: randomData()}, { name: '香港',value: randomData() }, { name: '澳门',value: randomData() }]
     
     // 绘制图表，准备数据
@@ -188,7 +188,7 @@
     //使用制定的配置项和数据显示图表
     myChart.setOption(option);
     function loadChart(pa){
-        window.location.href="page_2.html?name="+pa;
+        window.location.href="page_2.html?date="+document.getElementById("date1").value;
     }
     myChart.on('click', function (params) {
         var city = params.name;
@@ -196,11 +196,6 @@
     });
     </script>
     <script>
-        function gettime(){
-            var form=document.getElementById("date1");
-            var content=form.value;
-            alert(content);
-        }
         function chan(){
           
             document.getElementById("container").style.display=block;
@@ -211,5 +206,28 @@
             document.getElementById("container1").style.display=block;
             document.getElementById("container").style.display=none;
         }
+        document.getElementById("date1").value="2020-02-02";
+
+        function setdata(da){
+            var i1=document.getElementById("i1");
+            var i2=document.getElementById("i2");
+            var i3=document.getElementById("i3");
+            var i4=document.getElementById("i4");       
+            var i5=document.getElementById("i5");
+            var i6=document.getElementById("i6");
+            var i11=document.getElementById("i11");
+            var i22=document.getElementById("i22");
+            var i33=document.getElementById("i33");
+            var i44=document.getElementById("i44");
+            var i55=document.getElementById("i55");
+            var i66=document.getElementById("i66");
+            i1.innerText="1";
+        }
+        function gettime(){
+            var form=document.getElementById("date1");
+            var content=form.value;
+            setdata(content); 
+        }
     </script>
+    
   </body>    
