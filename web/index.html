@@ -18,6 +18,16 @@
     <script src="js/china.js"></script>
     <script src="js/self.js>"></script>
     <script>
+        function chan(){
+          
+          document.getElementById("container").style.display=block;
+          document.getElementById("container1").style.display=none;
+      }
+      function chan1(){
+          
+          document.getElementById("container1").style.display=block;
+          document.getElementById("container").style.display=none;
+      }
         function init(){
            gettime();
         }
@@ -37,7 +47,7 @@
             <button type="button" class="btn btn-primary btn-lg btn-block" onclick="chan1()">累计确诊</button></div> 
         <div id="all">
             <div id="container" style="height: 500px;width:900px;background:white;margin: 20px 0;">
-            <div id="container1" style="height: 500px;width:900px;background:white;margin: 20px 0;  display: none;">
+            <div id="container1" style="height: 500px;width:900px;background:white;margin: 20px 0;  ">
         </div></div>
     </div>
 
@@ -111,7 +121,8 @@
         //使用制定的配置项和数据显示图表
         myChart.setOption(option);
         function loadChart(pa){
-            window.location.href="page_2.html?name="+pa;
+            var da=document.getElementById("date1").value;
+            window.location.href=encodeURI("detial.html?name="+pa+"&date="+da);
         }
         myChart.on('click', function (params) {
             var city = params.name;
@@ -185,28 +196,18 @@
     };
     
     //初始化echarts实例
-    var myChart = echarts.init(document.getElementById('container1'));
+    var myChart1 = echarts.init(document.getElementById('container1'));
     //使用制定的配置项和数据显示图表
-    myChart.setOption(option);
+    myChart1.setOption(option);
     function loadChart(pa){
-        window.location.href="page_2.html?date="+document.getElementById("date1").value;
+        window.location.href=encodeURI("detial.html?name="+pa+"&date="+document.getElementById("date1").value);
     }
-    myChart.on('click', function (params) {
+    myChart1.on('click', function (params) {
         var city = params.name;
         loadChart(city); 
     });
     </script>
     <script>
-        function chan(){
-          
-            document.getElementById("container").style.display=block;
-            document.getElementById("container1").style.display=none;
-        }
-        function chan1(){
-            
-            document.getElementById("container1").style.display=block;
-            document.getElementById("container").style.display=none;
-        }
         document.getElementById("date1").value="2020-02-02";
 
         function setdata(da){

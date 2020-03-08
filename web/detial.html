@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        
+        function da() {  
+            var thisURL = document.URL;
+            var  getval =thisURL.split('?')[1];
+            var  showval=getval.split("&");
+            var x2=showval[1].split("=")[1];
+            alert(x2);
+        }
+        function na(){
+            var thisURL = document.URL;
+            var  getval =thisURL.split('?')[1];
+            var  showval=getval.split("&");
+            var x2=decodeURI(showval[0].split("=")[1]);
+            alert(x2);
+        }
+    </script>
+</head>
+<body>
+    <button onclick="na()">地名</button>
+    <button onclick="da()">日期</button>
+</body>
+</html>
