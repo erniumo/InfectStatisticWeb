@@ -1,37 +1,37 @@
-body{
-    background-image: url("../images/21.jpg");
-    min-width: 1000px;
-    margin: 0 auto;
-}
+
 #wrap{
-    background-color: cornflowerblue;
+    background-color: aliceblue;
     width: 900px;
     margin: 0 auto;
 }
 #header{
-    width: 900;
-    height: 50px;
-    margin: 0 auto;
+    width: 900px;
+    height: 80px;
+    padding-left: 330px ;
+    padding-top:10px;
+    padding-bottom:10px;
     background-color: bisque;
+    margin-bottom: 10px;
 }
 #nav{
     padding: 10px;
     height: 300px;
     width: 900px;
     margin: 0 auto;
+    background: aliceblue;
 }
 #all{
     padding: 20px 0;
     height: 600px;
     width: 900px;
     margin: 0 auto;
-    background-color: blueviolet;
+    background-color: white;
 }
 .row{
     width: 800px;
     height: 130px;
     margin: 10px auto;
-    background-color: brown;
+    background-color: aliceblue;
 }
 #info1,#info2,#info3,#info4,#info5,#info6{
     text-align: center;
@@ -42,4 +42,11 @@ body{
     height: 120px;
     color: black;
     background-color: white;
+}
+div{
+    border-radius: 10px;
+}
+#but{
+    border-radius: 10px;
+    background-color: aliceblue;
 }
