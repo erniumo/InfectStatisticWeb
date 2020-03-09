@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/mine.css" rel="stylesheet">
+    <script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
     <title>Document</title>
     <script>
         var qz=new Array();
@@ -445,151 +446,148 @@
     </div>
     <div id="image" >
         <div id="table">
-        <div id="text1"><h3>武汉 新增确诊趋势</h3><p>单位：例</p></div>
-        <div id="img"></div>
+            <div id="text1"></div>
+        <div id="img">
+
+        </div>
         </div>
     </div>
+    <script>
+        //初始化ehcharts实例
+    var myChart=echarts.init(document.getElementById("img"));
+    //指定图表的配置项和数据
+    var option={
+        //标题
+        title:{
+          text:na()+'新增确诊趋势'
+        },
+        //工具箱
+        //保存图片
+        toolbox:{
+            show:true,
+            feature:{
+                saveAsImage:{
+                    show:true
+                }
+            }
+        },
+        //图例-每一条数据的名字叫销量
+        legend:{
+            data:['确诊患者']
+        },
+        //x轴
+        xAxis:{
+            data:["01-27","01-28","01-29","01-30","01-31","02-01","02-02"]
+        },
+        //y轴没有显式设置，根据值自动生成y轴
+        yAxis:{},
+        //数据-data是最终要显示的数据
+        series:[{
+            name:'确诊患者',
+            type:'line',
+            //data:[qz[na()+'2020-01-27'],qz[na()+'2020-01-28','60','55','10','35']
+            data:[qz[na()+'2020-01-27'],qz[na()+'2020-01-28'],qz[na()+'2020-01-29'],qz[na()+'2020-01-30'],qz[na()+'2020-01-31'],qz[na()+'2020-02-01'],qz[na()+'2020-02-02']]
+        }
+        ]
+    };
+    //使用刚刚指定的配置项和数据项显示图表
+    myChart.setOption(option);
+
+    var option1={
+        //标题
+        title:{
+          text:na()+'累计确诊趋势'
+        },
+        //工具箱
+        //保存图片
+        toolbox:{
+            show:true,
+            feature:{
+                saveAsImage:{
+                    show:true
+                }
+            }
+        },
+        //图例-每一条数据的名字叫销量
+        legend:{
+            data:['确诊患者']
+        },
+        //x轴
+        xAxis:{
+            data:["01-27","01-28","01-29","01-30","01-31","02-01","02-02"]
+        },
+        //y轴没有显式设置，根据值自动生成y轴
+        yAxis:{},
+        //数据-data是最终要显示的数据
+        series:[{
+            name:'确诊患者',
+            type:'line',
+            //data:[qz[na()+'2020-01-27'],qz[na()+'2020-01-28','60','55','10','35']
+            data:[qz[na()+'2020-01-27'],qz[na()+'2020-01-28'],qz[na()+'2020-01-29'],qz[na()+'2020-01-30'],qz[na()+'2020-01-31'],qz[na()+'2020-02-01'],qz[na()+'2020-02-02']]
+        }
+        ]
+    };
+
+
+    var option2={
+        //标题
+        title:{
+          text:na()+'治愈/死亡趋势'
+        },
+        //工具箱
+        //保存图片
+        toolbox:{
+            show:true,
+            feature:{
+                saveAsImage:{
+                    show:true
+                }
+            }
+        },
+        //图例-每一条数据的名字叫销量
+        legend:{
+            data:['治愈','死亡']
+        },
+        //x轴
+        xAxis:{
+            data:["01-27","01-28","01-29","01-30","01-31","02-01","02-02"]
+        },
+        //y轴没有显式设置，根据值自动生成y轴
+        yAxis:{},
+        //数据-data是最终要显示的数据
+        series:[{
+            name:'治愈',
+            type:'line',
+            //data:[qz[na()+'2020-01-27'],qz[na()+'2020-01-28','60','55','10','35']
+            data:[zy[na()+'2020-01-27'],zy[na()+'2020-01-28'],zy[na()+'2020-01-29'],zy[na()+'2020-01-30'],zy[na()+'2020-01-31'],zy[na()+'2020-02-01'],zy[na()+'2020-02-02']]
+        },
+        {
+            name:'死亡',
+            type:'line',
+            //data:[qz[na()+'2020-01-27'],qz[na()+'2020-01-28','60','55','10','35']
+            data:[sw[na()+'2020-01-27'],sw[na()+'2020-01-28'],sw[na()+'2020-01-29'],sw[na()+'2020-01-30'],sw[na()+'2020-01-31'],sw[na()+'2020-02-01'],sw[na()+'2020-02-02']]
+        }
+        ]
+    };
+        function getAdd() {
+            document.getElementById("text").innerText=na()+"新增确诊趋势";
+            myChart.setOption(option);
+        }
+        function getAcc() {
+            document.getElementById("text").innerText=na()+"累计确诊趋势";
+            myChart.setOption(option1);
+        }
+        function getDc() {
+            document.getElementById("text").innerText=na()+"累计治愈/死亡趋势";
+            myChart.setOption(option2);
+        }
+    </script>
     <div class="button">
         <div class="but"><button class="butt" onclick="getAdd()">新增<br></br>确诊趋势</button></div>
         <div class="but"><button class="butt" onclick="getAcc()">累计<br></br>确诊趋势</button></div>
         <div class="but"><button class="butt" onclick="getDc()">新增<br></br>治愈/死亡</button></div>
     </div>
 </div>
-<script>
-    //初始化ehcharts实例
-    var myChart=echarts.init(document.getElementById("img"));
-    //指定图表的配置项和数据
-    var option1={
-        //标题
-        title:{
-            text:'湖北疫情统计'
-        },
-        //工具箱
-        //保存图片
-        toolbox:{
-            show:true,
-            feature:{
-                saveAsImage:{
-                    show:true
-                }
-            }
-        },
-        //图例-每一条数据的名字叫销量
-        legend:{
-            data:['感染患者',"疑似病例"]
-        },
-        //x轴
-        xAxis:{
-            data:["1","2","3","4","5","6","7"]
-        },
-        //y轴没有显式设置，根据值自动生成y轴
-        yAxis:{},
-        //数据-data是最终要显示的数据
-        series:[{
-            name:'感染患者',
-            type:'line',
-            data:[40,20,35,60,55,10,35]
-        },
-            {
-                name:'疑似病例',
-                type:'line',
-                data:[30,25,31,55,26,10,5]
-            }
 
-        ]
-    };
-    var option2={
-        //标题
-        title:{
-            text:'湖北疫情统计'
-        },
-        //工具箱
-        //保存图片
-        toolbox:{
-            show:true,
-            feature:{
-                saveAsImage:{
-                    show:true
-                }
-            }
-        },
-        //图例-每一条数据的名字叫销量
-        legend:{
-            data:['感染患者',"疑似病例"]
-        },
-        //x轴
-        xAxis:{
-            data:["1","2","3","4","5","6","7"]
-        },
-        //y轴没有显式设置，根据值自动生成y轴
-        yAxis:{},
-        //数据-data是最终要显示的数据
-        series:[{
-            name:'感染患者',
-            type:'line',
-            data:[40,20,35,60,55,10,35]
-        },
-            {
-                name:'疑似病例',
-                type:'line',
-                data:[30,25,31,55,26,10,5]
-            }
-
-        ]
-    };
-    var option3={
-        //标题
-        title:{
-            text:'湖北疫情统计'
-        },
-        //工具箱
-        //保存图片
-        toolbox:{
-            show:true,
-            feature:{
-                saveAsImage:{
-                    show:true
-                }
-            }
-        },
-        //图例-每一条数据的名字叫销量
-        legend:{
-            data:['感染患者',"疑似病例"]
-        },
-        //x轴
-        xAxis:{
-            data:["1","2","3","4","5","6","7"]
-        },
-        //y轴没有显式设置，根据值自动生成y轴
-        yAxis:{},
-        //数据-data是最终要显示的数据
-        series:[{
-            name:'感染患者',
-            type:'line',
-            data:[40,20,35,60,55,10,35]
-        },
-            {
-                name:'疑似病例',
-                type:'line',
-                data:[30,25,31,55,26,10,5]
-            }
-
-        ]
-    };
-    //使用刚刚指定的配置项和数据项显示图表
-    myChart.setOption(option1);
-    function getAdd() {
-        document.getElementById("text").innerText=na()+"新增确诊趋势";
-        myChart.setOption(option1);
-    }
-    function getAcc() {
-        document.getElementById("text").innerText=na()+"累计确诊趋势";
-        myChart.setOption(option2);
-    }
-    function getDc() {
-        document.getElementById("text").innerText=na()+"累计治愈/死亡趋势";
-        myChart.setOption(option3);
-    }
-</script>
 </body>
 </html>
