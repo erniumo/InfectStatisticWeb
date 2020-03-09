@@ -671,17 +671,41 @@
             var i44=document.getElementById("i44");
             var i55=document.getElementById("i55");
             var i66=document.getElementById("i66");
-            i1.innerText=parseInt(parseInt(qz[da])/15);
+            var be=getBSD();
+            var to=getD();
+            i1.innerText=(qz[to]-sw[to]-zy[to]).toString();
             i2.innerText=parseInt(parseInt(ys[da])/15);
             i3.innerText=parseInt(parseInt(qz[da])/18);
             i4.innerText=qz[da];
             i5.innerText=zy[da];
             i6.innerText=sw[da];
+            var x=((qz[to]-sw[to]-zy[to])-(qz[be]-sw[be]-zy[be]))/8;
+            x=parseInt(x);
+            i11.innerText="+"+x.toString();
+            i22.innerText="+"+(ys[to]-ys[be]).toString();
+            i33.innerText="+"+x;
+            i44.innerText="+"+(qz[to]-qz[be]).toString();
+            i55.innerText="+"+(zy[to]-zy[be]).toString();
+            i66.innerText="+"+(sw[to]-sw[be]).toString();
         }
         function gettime(){
             var form=document.getElementById("date1");
             var content=form.value;
             setdata(content); 
+        }
+        function getD() {
+            var form=document.getElementById("date1").value;
+            return form;
+        }
+        function getBSD(){
+            var x1=document.getElementById("date1").value;
+            var x2=x1.substr(x1.length-2,2);
+            var x3=(x2-1)%31;
+            if(x3<10) {
+                x3 = "0".concat(x3.toString());
+            }
+            var x4=x1.substr(0,x1.length-2).concat(x3);
+            return x4;
         }
     </script>
     

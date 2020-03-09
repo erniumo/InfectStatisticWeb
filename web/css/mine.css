@@ -29,7 +29,7 @@ div{
     width:1000px
 }
 #img{
-    background:wheat ;
+    background:white ;
     height: 500px;
     width: 900px;
 }
@@ -59,6 +59,7 @@ div{
     background:aliceblue;
     width: 1000px;
     height: 150px;
+    margin-top: 100px;
 }
 #image{
     width:1000px;
