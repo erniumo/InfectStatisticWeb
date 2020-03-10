@@ -699,11 +699,24 @@
         function getBSD(){
             var x1=document.getElementById("date1").value;
             var x2=x1.substr(x1.length-2,2);
-            var x3=(x2-1)%31;
-            if(x3<10) {
+            var x3=x2-1;
+            var x4;
+            if(x3<10&&x3>=1) {
                 x3 = "0".concat(x3.toString());
+                x4=x1.substr(0,x1.length-2).concat(x3);
             }
-            var x4=x1.substr(0,x1.length-2).concat(x3);
+            else if(x3<=0){
+                x3=(x3+31)%32;
+                var m=getMonth(x1);
+                m=m-1;
+                m=m.toString();
+                m = "0".concat(m.toString());
+                x4=x1.substr(0,4)+"-"+m+"-"+x3;
+            }
+            else if(x3>10){
+                x3=x3.toString();
+                x4=x1.substr(0,x1.length-2)+x3;
+            }
             return x4;
         }
     </script>

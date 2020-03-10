@@ -418,6 +418,15 @@
         sw["浙江2020-01-31"]=0;
         sw["浙江2020-02-01"]=0;
         sw["浙江2020-02-02"]=0;
+        for(var i=19;i>9;i--)
+        {
+            var x="2020-01-";
+            x=x+i;
+            qz[x]=0;
+            ys[x]=0;
+            sw[x]=0;
+            zy[x]=0;
+        }
         function da() {  
             var thisURL = document.URL;
             var  getval =thisURL.split('?')[1];
@@ -448,6 +457,11 @@
             document.getElementById("c").innerText+="+"+(zy[today]-zy[be]).toString();
             document.getElementById("d").innerText+="+"+(sw[today]-sw[be]).toString();
         }
+        function getMonth(day) {
+            var x=day.substr(0,day.lastIndexOf('-'));
+            x=x.substr(x.indexOf('-')+1,x.length);
+            return x;
+        }
         function getSD(){
             var x1=da();
             var x2=na();
@@ -456,16 +470,49 @@
         }
         function getBSD() {
             var x1=da();
-            var x2=na();
-            var x3=x2.concat(x1);
-            var x4=x1.substr(x1.length-2,2);
-            var x5=(x4-1)%31;
-            if(x5<10){
-                x5="0".concat(x5.toString());
+            var x2=x1.substr(x1.length-2,2);
+            var x3=x2-1;
+            var x4;
+            if(x3<10&&x3>=1) {
+                x3 = "0".concat(x3.toString());
+                x4=x1.substr(0,x1.length-2).concat(x3);
             }
-            var x6=x1.substr(0,x1.length-2).concat(x5);
-            var x7=x2.concat(x6);
-            return x7;
+            else if(x3<=0){
+                x3=(x3+31)%32;
+                var m=getMonth(x1);
+                m=m-1;
+                m=m.toString();
+                m = "0".concat(m.toString());
+                x4=x1.substr(0,x1.index('-')+1)+m+"-"+x3;
+            }
+            else if(x3>=10){
+                x3=x3.toString();
+                x4=x1.substr(0,4)+"-"+m+"-"+x3;
+            }
+            x4=na().concat(x4);
+            return x4;
+        }
+        function getFD(day){
+            var x1=day;
+            var x2=x1.substr(x1.length-2,2);
+            var x3=x2-1;
+            var x4;
+            if(x3<10&&x3>=1) {
+                x3 = "0".concat(x3.toString());
+                x4=x1.substr(0,x1.length-2).concat(x3);
+            }
+            else if(x3<=0){
+                x3=(x3+31)%32;
+                var m=getMonth(x1);
+                m=m-1;
+                m = "0".concat(m.toString());
+                x4=x1.substr(0,4)+"-"+m+"-"+x3;
+            }
+            else if(x3>10){
+                x3=x3.toString();
+                x4=x1.substr(0,x1.length-2)+x3;
+            }
+            return x4;
         }
     </script>
 </head>
@@ -497,6 +544,11 @@
     <script>
         //初始化ehcharts实例
         var myChart=echarts.init(document.getElementById("img"));
+        var x=new Array();
+        x[9]=da();
+        for(var i=8;i>=0;i--){
+            x[i]=getFD(x[i+1]);
+        }
         //指定图表的配置项和数据
         var option={
             //标题
@@ -513,13 +565,12 @@
                     }
                 }
             },
-            //图例-每一条数据的名字叫销量
             legend:{
                 data:['确诊患者']
             },
             //x轴
             xAxis:{
-                data:["01-27","01-28","01-29","01-30","01-31","02-01","02-02"]
+                data:[x[0],x[1],x[2],x[3],x[4],x[5],x[6],x[7],x[8],x[9]]
             },
             //y轴没有显式设置，根据值自动生成y轴
             yAxis:{},
@@ -528,7 +579,7 @@
                 name:'确诊患者',
                 type:'line',
                 //data:[qz[na()+'2020-01-27'],qz[na()+'2020-01-28','60','55','10','35']
-                data:[qz[na()+'2020-01-27'],qz[na()+'2020-01-28'],qz[na()+'2020-01-29'],qz[na()+'2020-01-30'],qz[na()+'2020-01-31'],qz[na()+'2020-02-01'],qz[na()+'2020-02-02']]
+                data:[qz[na()+x[0]],qz[na()+x[1]],qz[na()+x[2]],qz[na()+x[3]],qz[na()+x[4]],qz[na()+x[5]],qz[na()+x[6]],qz[na()+x[7]],qz[na()+x[8]],qz[na()+x[9]]]
             }
             ]
         };
@@ -556,7 +607,7 @@
             },
             //x轴
             xAxis:{
-                data:["01-27","01-28","01-29","01-30","01-31","02-01","02-02"]
+                data:[x[0],x[1],x[2],x[3],x[4],x[5],x[6],x[7],x[8],x[9]]
             },
             //y轴没有显式设置，根据值自动生成y轴
             yAxis:{},
@@ -565,7 +616,7 @@
                 name:'确诊患者',
                 type:'line',
                 //data:[qz[na()+'2020-01-27'],qz[na()+'2020-01-28','60','55','10','35']
-                data:[qz[na()+'2020-01-27'],qz[na()+'2020-01-28'],qz[na()+'2020-01-29'],qz[na()+'2020-01-30'],qz[na()+'2020-01-31'],qz[na()+'2020-02-01'],qz[na()+'2020-02-02']]
+                data:[qz[na()+x[0]],qz[na()+x[1]],qz[na()+x[2]],qz[na()+x[3]],qz[na()+x[4]],qz[na()+x[5]],qz[na()+x[6]],qz[na()+x[7]],qz[na()+x[8]],qz[na()+x[9]]]
             }
             ]
         };
@@ -592,7 +643,7 @@
             },
             //x轴
             xAxis:{
-                data:["01-27","01-28","01-29","01-30","01-31","02-01","02-02"]
+                data:[x[0],x[1],x[2],x[3],x[4],x[5],x[6],x[7],x[8],x[9]]
             },
             //y轴没有显式设置，根据值自动生成y轴
             yAxis:{},
@@ -601,13 +652,13 @@
                 name:'治愈',
                 type:'line',
                 //data:[qz[na()+'2020-01-27'],qz[na()+'2020-01-28','60','55','10','35']
-                data:[zy[na()+'2020-01-27'],zy[na()+'2020-01-28'],zy[na()+'2020-01-29'],zy[na()+'2020-01-30'],zy[na()+'2020-01-31'],zy[na()+'2020-02-01'],zy[na()+'2020-02-02']]
+                data:[zy[na()+x[0]],zy[na()+x[1]],zy[na()+x[2]],zy[na()+x[3]],zy[na()+x[4]],zy[na()+x[5]],zy[na()+x[6]],zy[na()+x[7]],zy[na()+x[8]],zy[na()+x[9]]]
             },
                 {
                     name:'死亡',
                     type:'line',
                     //data:[qz[na()+'2020-01-27'],qz[na()+'2020-01-28','60','55','10','35']
-                    data:[sw[na()+'2020-01-27'],sw[na()+'2020-01-28'],sw[na()+'2020-01-29'],sw[na()+'2020-01-30'],sw[na()+'2020-01-31'],sw[na()+'2020-02-01'],sw[na()+'2020-02-02']]
+                    data:[sw[na()+x[0]],sw[na()+x[1]],sw[na()+x[2]],sw[na()+x[3]],sw[na()+x[4]],sw[na()+sw[5]],sw[na()+x[6]],sw[na()+x[7]],sw[na()+x[8]],sw[na()+x[9]]]
                 }
             ]
         };
