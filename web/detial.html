@@ -487,7 +487,7 @@
             }
             else if(x3>=10){
                 x3=x3.toString();
-                x4=x1.substr(0,4)+"-"+m+"-"+x3;
+                x4=x1.substr(0,x1.length-2).concat(x3);
             }
             x4=na().concat(x4);
             return x4;

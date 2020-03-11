@@ -17,6 +17,7 @@
     <script src="js/china.js"></script>
     <script src="js/self.js>"></script>
     <script>
+        
         function chan(){
           myChart.clear();
           myChart.setOption(option);  
@@ -59,14 +60,16 @@
     </div>
 
     <script type="text/javascript">
-          function randomData() {  
-                      return Math.round(Math.random()*1100);  
-                  } 
+        
+        function randomData() {  
+                return Math.round(Math.random()*1100);  
+            } 
+      
         // 全国省份列表
         var dataMap = [{ name: '北京',value: randomData() }, { name: '天津',value: randomData() }, { name: '上海',value: randomData() }, { name: '重庆',value: randomData() }, { name: '河北',value: randomData() }, { name: '河南',value: randomData() }, { name: '云南' ,value: randomData() }, { name: '辽宁',value: randomData() }, { name: '黑龙江' ,value: randomData()}, { name: '湖南',value: randomData() }, { name: '安徽',value: randomData() }, { name: '山东',value: randomData() },
-        { name: '新疆',value: randomData() }, { name: '江苏',value: randomData() }, { name: '浙江',value: randomData() }, { name: '江西',value: randomData() }, { name: '湖北',value: randomData() }, { name: '广西',value: randomData() }, { name: '甘肃',value: randomData()  }, { name: '山西' ,value: randomData() }, { name: '内蒙古' ,value: randomData()}, { name: '陕西',value: randomData() }, { name: '吉林',value: randomData() }, { name: '福建',value: randomData() }, { name: '贵州',value: randomData() },
-        { name: '广东',value: randomData() }, { name: '青海',value: randomData() }, { name: '西藏' ,value: randomData()}, { name: '四川' ,value: randomData()}, { name: '宁夏',value: randomData() }, { name: '海南',value: randomData() }, { name: '台湾' ,value: randomData()}, { name: '香港',value: randomData() }, { name: '澳门',value: randomData() }]
-       
+    { name: '新疆',value: randomData() }, { name: '江苏',value: randomData() }, { name: '浙江',value: randomData() }, { name: '江西',value: randomData() }, { name: '湖北',value: randomData() }, { name: '广西',value: randomData() }, { name: '甘肃' ,value: randomData() }, { name: '山西'  ,value: randomData()}, { name: '内蒙古' ,value: randomData()}, { name: '陕西',value: randomData() }, { name: '吉林',value: randomData() }, { name: '福建',value: randomData() }, { name: '贵州',value: randomData() },
+    { name: '广东',value: randomData() }, { name: '青海',value: randomData() }, { name: '西藏' ,value: randomData()}, { name: '四川' ,value: randomData()}, { name: '宁夏',value: randomData() }, { name: '海南',value: randomData() }, { name: '台湾' ,value: randomData()}, { name: '香港',value: randomData() }, { name: '澳门',value: randomData() }]
+    
         // 绘制图表，准备数据
         var option = {
             tooltip: {
@@ -217,7 +220,6 @@
     </script>
     <script>
         document.getElementById("date1").value="2020-02-02";
-
         function setdata(da){
             var qz=new Array();
             var ys=new Array();
@@ -377,6 +379,53 @@
             qz["浙江2020-01-31"]=529;
             qz["浙江2020-02-01"]=585;
             qz["浙江2020-02-02"]=639;
+
+            qz["甘肃2020-02-02"]=49;
+            qz["广东2020-02-02"]=649;
+            qz["贵州2020-02-02"]=44;
+            qz["海南2020-02-02"]=64;
+            qz["河北2020-02-02"]=109;
+            qz["河南2020-02-02"]=488;
+            qz["黑龙江2020-02-02"]=91;
+            qz["湖南2020-02-02"]=455;
+            qz["江西2020-02-02"]=324;
+            qz["吉林2020-02-02"]=22;
+            qz["江苏2020-02-02"]=230;
+            qz["辽宁2020-02-02"]=63;
+            qz["内蒙古2020-02-02"]=26;
+            qz["青海2020-02-02"]=11;
+            qz["山西2020-02-02"]=55;
+            qz["山东2020-02-02"]=225;
+            qz["陕西2020-02-02"]=102;
+            qz["上海2020-02-02"]=156;
+            qz["四川2020-02-02"]=228;
+            qz["天津2020-02-02"]=41;
+            qz["西藏2020-02-02"]=1;
+            qz["新疆2020-02-02"]=21;
+            qz["云南2020-02-02"]=102;
+
+            qz["甘肃2020-01-25"]=7 ;
+            qz["广东2020-01-25"]=76;
+            qz["贵州2020-01-25"]=5;
+            qz["海南2020-01-25"]=20;
+            qz["河北2020-01-25"]=12;
+            qz["河南2020-01-25"]=32;
+            qz["黑龙江2020-01-25"]=8;
+            qz["湖南2020-01-25"]=43;
+            qz["江西2020-01-25"]=18;
+            qz["吉林2020-01-25"]=4;
+            qz["江苏2020-01-25"]=18;
+            qz["辽宁2020-01-25"]=12;
+            qz["内蒙古2020-01-25"]=2;
+            qz["青海2020-01-25"]=0;
+            qz["山西2020-01-25"]=6;
+            qz["山东2020-01-25"]=21;
+            qz["陕西2020-01-25"]=5;
+            qz["上海2020-01-25"]=32;
+            qz["四川2020-01-25"]=28;
+            qz["天津2020-01-25"]=8;
+            qz["新疆2020-01-25"]=3;
+            qz["云南2020-01-25"]=5;
 
             ys["湖北2020-01-19"]=0;
             ys["湖北2020-01-20"]=0;
