@@ -228,9 +228,10 @@
         qz["天津2020-01-25"]=8;
         qz["新疆2020-01-25"]=3;
         qz["云南2020-01-25"]=5;
-        qz["台湾2020-01-25"]=10;
-        qz["澳门2020-01-25"]=15;
-        qz["香港2020-01-25"]=20;
+        qz["台湾2020-01-25"]=5;
+        qz["澳门2020-01-25"]=4;
+        qz["香港2020-01-25"]=5;
+        qz["西藏2020-01-25"]=0;
         function chan(){
           myChart.clear();
           myChart.setOption(option);  
@@ -266,18 +267,16 @@
         </div>
         <div id="all">
             <div id="container" style="height: 500px;width:900px;background:white;margin: 20px 0;">
-            <div id="container1" style="height: 500px;width:900px;background:white;margin: 20px 0;  ">
-        </div>
+            <div id="container1" style="height: 500px;width:900px;background:white;margin: 20px 0;  "></div>
             </div>
-    </div>
-    </div>
-
+        </div>
+        </div>
     <script type="text/javascript">
         document.getElementById("date1").value="2020-02-02";
-        function randomData() {  
-                return Math.round(Math.random()*200);  
-            } 
-      
+        function randomData() {
+            return Math.round(Math.random()*200);
+        }
+
         // 全国省份列表
         var x=document.getElementById("date1").value;
         var dataMap = [{ name: '北京',value: qz["北京"+x] }, { name: '天津',value: qz["天津"+x] }, { name: '上海',value: qz["上海"+x] }, { name: '重庆',value: qz["重庆"+x] }, { name: '河北',value: qz["河北"+x] }, { name: '河南',value: qz["河南"+x] }, { name: '云南' ,value: qz["云南"+x] }, { name: '辽宁',value: qz["辽宁"+x] }, { name: '黑龙江' ,value: qz["黑龙江"+x]}, { name: '湖南',value: qz["湖南"+x] }, { name: '安徽',value: qz["安徽"+x] }, { name: '山东',value: qz["山东"+x] },
@@ -287,24 +286,24 @@
         var option = {
             tooltip: {
                 formatter: function (params) {
-                        var info = '<p style="font-size:18px">' + params.name + '</p><p style="font-size:14px">感染患者'+params.value+'</p>';
-                        return info;
-                    },
+                    var info = '<p style="font-size:18px">' + params.name + '</p><p style="font-size:14px">感染患者'+params.value+'</p>';
+                    return info;
+                },
                 backgroundColor: "#ff7f50",//提示标签背景颜色
                 textStyle: { color: "#fff" } //提示标签字体颜色
             },
-             //左侧小导航图标
-             visualMap: {  
-                show : true,  
-                x: 'left',  
-                y: 'bottom',  
-                splitList: [   
+            //左侧小导航图标
+            visualMap: {
+                show : true,
+                x: 'left',
+                y: 'bottom',
+                splitList: [
                     {start: 20001, end:100000},{start:3001, end: 20000},
                     {start: 1000, end: 3000},{start: 500, end: 999},
                     {start: 100, end: 499},{start: 0, end: 99},
-                ],  
+                ],
                 color: ['#990000', '#CC0000', '#CC3300','#FF3333', '#FF3300', '#FF6633']
-            },  
+            },
 
             series: [
                 {
@@ -338,7 +337,7 @@
                 }
             ]
         };
-        
+
         //初始化echarts实例
         var myChart = echarts.init(document.getElementById('container'));
         //使用制定的配置项和数据显示图表
@@ -349,75 +348,74 @@
         }
         myChart.on('click', function (params) {
             var city = params.name;
-            loadChart(city); 
+            loadChart(city);
         });
     </script>
 
     <script type="text/javascript">
-    function randomData() {  
-                return Math.round(Math.random()*200);  
-            } 
-    // 全国省份列表
-    var x=document.getElementById("date1").value;
-    var dataMap = [{ name: '北京',value: qz["北京"+x] }, { name: '天津',value: qz["天津"+x] }, { name: '上海',value: qz["上海"+x] }, { name: '重庆',value: qz["重庆"+x] }, { name: '河北',value: qz["河北"+x] }, { name: '河南',value: qz["河南"+x] }, { name: '云南' ,value: qz["云南"+x] }, { name: '辽宁',value: qz["辽宁"+x] }, { name: '黑龙江' ,value: qz["黑龙江"+x]}, { name: '湖南',value: qz["湖南"+x] }, { name: '安徽',value: qz["安徽"+x] }, { name: '山东',value: qz["山东"+x] },
-        { name: '新疆',value: qz["新疆"+x] }, { name: '江苏',value: qz["江苏"+x] }, { name: '浙江',value: qz["浙江"+x] }, { name: '江西',value: qz["江西"+x] }, { name: '湖北',value: qz["湖北"+x] }, { name: '广西',value: qz["广西"+x] }, { name: '甘肃',value: qz["甘肃"+x]  }, { name: '山西' ,value: qz["山西"+x] }, { name: '内蒙古' ,value: qz["内蒙古"+x]}, { name: '陕西',value: qz["陕西"+x] }, { name: '吉林',value: qz["吉林"+x] }, { name: '福建',value: qz["福建"+x] }, { name: '贵州',value:qz["贵州"+x] },
-        { name: '广东',value: qz["广东"+x] }, { name: '青海',value: qz["青海"+x] }, { name: '西藏' ,value: qz["西藏"+x]}, { name: '四川' ,value: qz["四川"+x]}, { name: '宁夏',value: qz["宁夏"+x] }, { name: '海南',value: qz["海南"+x] }, { name: '台湾' ,value: randomData()}, { name: '香港',value: randomData() }, { name: '澳门',value: randomData() }]
-    // 绘制图表，准备数据
-    var option1 = {
-        tooltip: {
-            formatter: function (params) {
-                var info = '<p style="font-size:18px">' + params.name + '</p><p style="font-size:14px">感染患者'+params.value+ '</p>'
-                return info;
+        function randomData() {
+            return Math.round(Math.random()*200);
+        }
+        // 全国省份列表
+        var x=document.getElementById("date1").value;
+        var dataMap = [{ name: '北京',value: qz["北京"+x] }, { name: '天津',value: qz["天津"+x] }, { name: '上海',value: qz["上海"+x] }, { name: '重庆',value: qz["重庆"+x] }, { name: '河北',value: qz["河北"+x] }, { name: '河南',value: qz["河南"+x] }, { name: '云南' ,value: qz["云南"+x] }, { name: '辽宁',value: qz["辽宁"+x] }, { name: '黑龙江' ,value: qz["黑龙江"+x]}, { name: '湖南',value: qz["湖南"+x] }, { name: '安徽',value: qz["安徽"+x] }, { name: '山东',value: qz["山东"+x] },
+            { name: '新疆',value: qz["新疆"+x] }, { name: '江苏',value: qz["江苏"+x] }, { name: '浙江',value: qz["浙江"+x] }, { name: '江西',value: qz["江西"+x] }, { name: '湖北',value: qz["湖北"+x] }, { name: '广西',value: qz["广西"+x] }, { name: '甘肃',value: qz["甘肃"+x]  }, { name: '山西' ,value: qz["山西"+x] }, { name: '内蒙古' ,value: qz["内蒙古"+x]}, { name: '陕西',value: qz["陕西"+x] }, { name: '吉林',value: qz["吉林"+x] }, { name: '福建',value: qz["福建"+x] }, { name: '贵州',value:qz["贵州"+x] },
+            { name: '广东',value: qz["广东"+x] }, { name: '青海',value: qz["青海"+x] }, { name: '西藏' ,value: qz["西藏"+x]}, { name: '四川' ,value: qz["四川"+x]}, { name: '宁夏',value: qz["宁夏"+x] }, { name: '海南',value: qz["海南"+x] }, { name: '台湾' ,value: randomData()}, { name: '香港',value: randomData() }, { name: '澳门',value: randomData() }]
+        // 绘制图表，准备数据
+        var option1 = {
+            tooltip: {
+                formatter: function (params) {
+                    var info = '<p style="font-size:18px">' + params.name + '</p><p style="font-size:14px">感染患者'+params.value+ '</p>'
+                    return info;
+                },
+                backgroundColor: "#ff7f50",//提示标签背景颜色
+                textStyle: { color: "#fff" } //提示标签字体颜色
             },
-            backgroundColor: "#ff7f50",//提示标签背景颜色
-            textStyle: { color: "#fff" } //提示标签字体颜色
-        },
-        //左侧小导航图标
-        visualMap: {  
-            show : true,  
-            x: 'left',  
-            y: 'bottom',
-            splitList: [
-            {start: 20001, end:100000},{start:3001, end: 20000},
-                {start: 1000, end: 3000},{start: 500, end: 999},
-                {start: 100, end: 499},{start: 0, end: 99},
-            ],
-            color: ['#990000', '#9feaa5', '#85daef','#74e2ca', '#e6ac53', '#9fb5ea']
-        },
+            //左侧小导航图标
+            visualMap: {
+                show : true,
+                x: 'left',
+                y: 'bottom',
+                splitList: [
+                    {start: 20001, end:100000},{start:3001, end: 20000},
+                    {start: 1000, end: 3000},{start: 500, end: 999},
+                    {start: 100, end: 499},{start: 0, end: 99},
+                ],
+                color: ['#990000', '#9feaa5', '#85daef','#74e2ca', '#e6ac53', '#9fb5ea']
+            },
 
-        series: [
-            {
-                name: '中国',
-                type: 'map',
-                mapType: 'china',
-                selectedMode: 'multiple',
-                label: {
-                    normal: {
-                        show: true,//显示省份标签
-                        // textStyle:{color:"#c71585"}//省份标签字体颜色
+            series: [
+                {
+                    name: '中国',
+                    type: 'map',
+                    mapType: 'china',
+                    selectedMode: 'multiple',
+                    label: {
+                        normal: {
+                            show: true,//显示省份标签
+                            // textStyle:{color:"#c71585"}//省份标签字体颜色
+                        },
+                        emphasis: {
+                            show: true,//对应的鼠标悬浮效果
+                            // textStyle:{color:"#800080"}
+                        }
                     },
-                    emphasis: {
-                        show: true,//对应的鼠标悬浮效果
-                        // textStyle:{color:"#800080"}
-                    }
-                },
-                itemStyle: {
-                    normal: {
-                        borderWidth: .5,//区域边框宽度
-                        // borderColor: '#009fe8',//区域边框颜色
-                        // areaColor:"#ffefd5",//区域颜色
+                    itemStyle: {
+                        normal: {
+                            borderWidth: .5,//区域边框宽度
+                            // borderColor: '#009fe8',//区域边框颜色
+                            // areaColor:"#ffefd5",//区域颜色
+                        },
+                        emphasis: {
+                            borderWidth: .5,
+                            borderColor: '#4b0082',
+                            areaColor: "#ffdead",
+                        }
                     },
-                    emphasis: {
-                        borderWidth: .5,
-                        borderColor: '#4b0082',
-                        areaColor: "#ffdead",
-                    }
-                },
-                data: dataMap
-            }
-        ]
-    };
-    
+                    data: dataMap
+                }
+            ]
+        };
     //初始化echarts实例
         var myChart = echarts.init(document.getElementById('container'));
         //使用制定的配置项和数据显示图表
@@ -432,7 +430,6 @@
         });
     </script>
     <script>
-        
         function setdata(da){
             var qz=new Array();
             var ys=new Array();
@@ -982,6 +979,5 @@
             return x4;
         }
     </script>
-    
   </body>
 </html>
